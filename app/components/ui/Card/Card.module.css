@@ -1,0 +1,53 @@
+.card {
+  width: 100%;
+  display: flex;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+  border-radius: var(--space-md);
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: rgb(var(--background));
+  background-image: url('../../../../public/postcard-texture.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 6px 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.expanded {
+  margin-top: 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+
+/* Desktop layout */
+@media screen and (min-width: 600px) {
+  .card {
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto;
+    align-items: start;
+  }
+
+  .reversed {
+    grid-template-columns: 2fr 1fr;
+  }
+
+
+  .cardText {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+.links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+}

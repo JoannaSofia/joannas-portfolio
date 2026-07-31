@@ -1,0 +1,55 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    padding: 3rem 2rem 4rem 2rem;
+    border-top: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #EDE9E4;
+    background: #FFF8F0;
+  background-image: url('../../../public/postcard-texture.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+
+
+    @media screen and (min-width: 600px) {
+        padding: 4rem 4rem;
+    }
+}
+
+.emailWrapper {
+  display: flex;
+
+
+  gap: 0.5rem;
+}
+
+.emailText {
+  font-family: var(--font-general);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.copyIcon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  transition: color 0.2s ease;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.copyIcon:hover {
+  color: var(--color-text-secondary);
+}
+
+.linksRow {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}

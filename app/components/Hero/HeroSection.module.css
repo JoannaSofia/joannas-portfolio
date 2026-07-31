@@ -1,0 +1,90 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxl);
+  margin-top: 8rem;
+  padding: 0 var(--space-xxl) var(--space-md);
+}
+
+.headingSection {
+  padding: var(--space-md) 0;
+}
+
+.postcardSection {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-xxl);
+}
+
+.stampWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: var(--space-md);
+  width: 400px;
+}
+
+.stampBadge {
+  width: 100px;
+  padding: var(--space-sm);
+  border-radius: 999px;
+  border: 1px solid rgb(var(--color-aubergine));
+  color: rgb(var(--primary-text));
+  cursor: pointer;
+  transition: background 0.2s ease;
+  background: rgb(var(--background));
+}
+
+/*.postcardWrapper {
+  max-width: 600px;
+}*/
+
+.postcard {
+  background: #FFF8F0;
+  background-image: url('../../../public/postcard-texture.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+  padding: 2rem 4rem;
+  border: 1px solid #EDE9E4;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  border-radius: 6px;
+  min-width: 331px;
+  position: relative;
+  z-index: 0;
+
+  @media screen and (min-width: 900px) {
+    min-width: 600px;
+  }
+}
+
+.postcard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('../../../public/gplay.png');
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.stampPlaceholder {
+  width: 80px;
+  height: 80px;
+  border: 1px solid rgb(var(--color-moss));
+  align-self: end;
+}
+
+.addressLine {
+  border-bottom: 1px solid rgb(var(--primary-text));
+}
+
+
+
+
+

@@ -1,9 +1,9 @@
 
 .container {
-  scroll-margin-top: 80px;
   border-top: 1px solid #EDE9E4;
-  margin: 5rem auto 2rem;
-  padding: 0 var(--space-xxl);
+  padding: 5rem var(--space-xxl);
+  width: min(100% - 3rem, 1300px);
+  margin-inline: auto;
 }
 
 .heading {

@@ -1,134 +1,142 @@
+
 .navbar {
-    z-index: 1000;
-    background-color: var(--color-background);
-    margin: 0rem auto 2rem;
-  padding: 0 var(--space-xxl);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  padding: 0.75rem var(--space-xxl);
+  background-color: var(--color-background);
+  border-bottom: 1px solid #EDE9E4;
+  width: min(100% - 3rem, 1300px);
+  margin-inline: auto;
 }
 
 .navItems {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 55px;
 }
 
-.navLinks {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    list-style-type: none;
-    gap: 2rem;
-}
-
-
-.navLink {
-    font-family: var(--font-general);
-    text-decoration: none;
-    color: var(--primary-text);
-    cursor: pointer;
-    font-weight: 500;
+.logoLink {
+  display: flex;
+  align-items: center;
 }
 
 .logo {
-    visibility: hidden;
+  display: block;
+  width: 60px;
+  height: auto;
+}
 
-    @media screen and (min-width: 600px) {
-        width: 80%;
-    }
+.navLinks {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+.navLinks.showMenuNav {
+  display: flex;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: var(--color-background);
+  border-bottom: 1px solid #EDE9E4;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.06);
+}
+
+.navLink {
+  font-family: var(--font-general);
+  text-decoration: none;
+  color: var(--primary-text);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: var(--color-purple-700);
+}
+
+.navLink:focus-visible,
+.logoLink:focus-visible {
+  outline: 2px solid var(--color-purple-700);
+  outline-offset: 5px;
 }
 
 .hamburger {
-    width: 2rem;
-    height: 2rem;
-    display: flex;
-    justify-content: space-around;
-    flex-flow: column nowrap;
-    z-index: 10;
-    position: absolute;
-    top: 30px;
-    right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 2;
 }
 
 .burger {
-    background-color: black;
-    width: 2.5rem;
-    height: 0.25rem;
-    border-radius: 10px;
-    transform-origin: 1px;
-    transition: all 0.3s linear;
+  width: 2rem;
+  height: 3px;
+  border-radius: 10px;
+  background-color: var(--primary-text);
+  transform-origin: 2px;
+  transition: all 0.3s ease;
 }
 
-/* States */
 .burger1Open {
-    transform: rotate(35deg);
+  transform: rotate(35deg);
 }
 
 .burger2Open {
-    transform: translateX(100%);
-    opacity: 0;
+  opacity: 0;
+  transform: translateX(10px);
 }
 
 .burger3Open {
-    transform: rotate(-35deg);
+  transform: rotate(-35deg);
 }
 
-/* Default: hide menu for mobile */
-.hideMenuNav {
+@media screen and (min-width: 700px) {
+  .hamburger {
     display: none;
-}
+  }
 
-/* When open: show menu */
-.showMenuNav {
+  .navLinks,
+  .navLinks.showMenuNav {
     display: flex;
-    position: absolute;
-    top: 60px;
-    /* adjust depending on navbar height */
-    left: 0;
-    right: 0;
-    background-color: white;
-    flex-direction: column;
-    padding: 2rem;
-    z-index: 9;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    gap: 2rem;
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
 }
 
+@media (max-width: 500px) {
+  .navbar {
+    padding-inline: 1rem;
+  }
 
-@media screen and (min-width: 600px) {
-    .navItems {
-        flex-direction: row;
-        justify-content: space-between;
-        height: auto;
-    }
+  .logo {
+    width: 90px;
+  }
 }
 
-@media screen and (min-width: 600px) {
-    .navLinks {
-        flex-direction: row;
-    }
-}
-
-@media screen and (min-width: 600px) {
-    .logo {
-        font-weight: 700;
-        visibility: visible;
-    }
-}
-
-
-@media screen and (min-width: 600px) {
-    .hamburger {
-        visibility: hidden;
-    }
-}
-
-/* Desktop: always show nav links */
-@media screen and (min-width: 600px) {
-
-    .hideMenuNav,
-    .showMenuNav {
-        display: flex !important;
-        position: static;
-        flex-direction: row;
-        padding: 0;
-        background: none;
-    }
+@media (prefers-reduced-motion: reduce) {
+  .burger,
+  .navLink {
+    transition: none;
+  }
 }

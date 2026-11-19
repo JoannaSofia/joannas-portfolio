@@ -31,6 +31,9 @@ function Footer() {
       </div>
 
       <div className={styles.footerContent}>
+        <a href="#top" className={styles.backToTop}>
+          Back to top ↑
+      </a>
         <nav className={styles.socialLinks} aria-label="Social links">
           <a
             href="https://github.com/JoannaSofia"

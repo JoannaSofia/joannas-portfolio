@@ -1,7 +1,6 @@
 
 .aboutContainer {
   color: var(--color-text-secondary);
-  scroll-margin-top: 80px;
   border-top: 1px solid #EDE9E4;
 }
 
@@ -9,8 +8,9 @@
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   gap: 3rem;
-  margin: 5rem auto 2rem;
-  padding: 0 var(--space-xxl);
+  padding: 5rem var(--space-xxl);  
+  width: min(100% - 3rem, 1300px);
+  margin-inline: auto;
 }
 
 .intro {

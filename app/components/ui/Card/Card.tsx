@@ -1,47 +1,53 @@
-'use client';
-import React, { useState } from 'react';
+
+import React from 'react';
 import styles from './Card.module.css';
-import IconButton from '../Button/IconButton';
-import { RiArticleFill, RiGithubFill } from "react-icons/ri";
-import { p } from 'framer-motion/client';
 
 type CardProps = {
   title: string;
-  description: string;
-  githubUrl: string;
-  blogUrl?: string;
-  readmeUrl?: string;
+  category: string;
+  shortDescription: string;
+  image: string;
+  onClick: () => void;
 };
 
 export default function Card({
   title,
-  description,
-  githubUrl,
-  blogUrl,
-  readmeUrl
+  category,
+  shortDescription,
+  image,
+  onClick,
 }: CardProps) {
-  const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className={`${styles.card}`}
-      onClick={() => setExpanded(!expanded)}
-    >
+    <article className={styles.card}>
+      <div className={styles.imageWrapper}>
+        <img
+          src={image}
+          alt={`${title} project preview`}
+          className={styles.projectImage}
+        />
+
+        <div className={styles.stampPlaceholder}>
+          <span>✳</span>
+        </div>
+      </div>
 
       <div className={styles.cardText}>
+        <span className={styles.category}>{category}</span>
+
         <h3>{title}</h3>
-        <p>{description.substring(0, 80)}...</p>
 
-        {expanded && (
-          <div>
-            <p>{description}</p>
-            <div className={styles.links}>
-              {githubUrl && <a href={githubUrl}>GitHub</a>}
-              {readmeUrl && <a href={readmeUrl}>Read more</a>}
-            </div>
-          </div>
-        )}
+        <p>{shortDescription}</p>
+
+        <button
+          type="button"
+          className={styles.exploreButton}
+          onClick={onClick}
+          aria-label={`Explore ${title} project`}
+        >
+          Explore project <span aria-hidden="true">→</span>
+        </button>
       </div>
-    </div>
-
+    </article>
   );
 }

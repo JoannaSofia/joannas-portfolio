@@ -16,7 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${clash.variable} ${general.variable}`}>
       <body>
-        <Navbar/>{children}</body>
+        <div className="appContainer">
+        <Navbar/>{children}
+        </div>
+        </body>
     </html>
   );
 }

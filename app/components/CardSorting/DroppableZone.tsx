@@ -5,13 +5,18 @@ export const DroppableZone = ({ id, children }: { id: string; children: React.Re
   const { setNodeRef, isOver } = useDroppable({ id });
 
   return (
-    <div
-      className={styles.dropZone}
-      ref={setNodeRef}
-      style={{ background: isOver ? '#e0f7fa' : undefined }}
-    >
-      <div className={styles.dropZoneTitle}>{id}</div>
+  <div
+    className={styles.dropZone}
+    ref={setNodeRef}
+    style={{
+      background: isOver ? '#efcbe4' : undefined
+    }}
+  >
+    <div className={styles.dropZoneTitle}>{id}</div>
+
+    <div className={styles.cardsContainer}>
       {children}
     </div>
-  );
+  </div>
+);
 };

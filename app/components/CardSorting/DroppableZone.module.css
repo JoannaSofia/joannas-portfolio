@@ -1,21 +1,38 @@
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+}
+
 
 .dropZone {
-  border: 2px dashed var(--color-accent-plum); 
-  border-radius: 20px;
-  padding: 1rem 3rem 2rem 3rem;
-  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+
+  padding: 1.5rem 1rem;
+  min-width: 0;
   min-height: 200px;
-  background-color: var(--color-bg-pinkbeige); 
-  transition: background 0.3s ease;
-  backdrop-filter: blur(4px);
+
+  background: rgba(255, 248, 240, 0.45);
+  border: 1px dashed rgba(90, 70, 85, 0.3);
+  border-radius: 1rem;
+
+  transition: background-color 0.2s ease,
+              border-color 0.2s ease;
 }
 
 .dropZoneTitle {
   font-family: var(--font-clash);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 500;
-  color: #4A3F35; /* Title kort */
-  margin-bottom: 1rem;
+  color: var(--color-text-primary);
+
+  margin-bottom: 0.5rem;
   text-align: center;
-  letter-spacing: 1px;
+  letter-spacing: 0.3px;
 }

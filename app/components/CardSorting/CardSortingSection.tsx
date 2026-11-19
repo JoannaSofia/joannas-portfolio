@@ -42,13 +42,17 @@ export default function CardSortingSection() {
       setActiveCard(foundCard);
     }
   };
-
+      const isDeckEmpty = deck.length === 0;
   const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event;
-    if (!over) return;
+  const { active, over } = event;
+
+  setActiveCard(null);
+
+  if (!over) return;
 
     const draggedId = active.id as string;
     const zoneId = over.id as keyof typeof zones;
+
 
     // Look in deck
     let draggedCard = deck.find((card) => card.id === draggedId);
@@ -62,7 +66,6 @@ export default function CardSortingSection() {
           break;
         }
       }
-      setActiveCard(null); // Clear overlay
     }
 
     if (!draggedCard) return;
@@ -83,58 +86,74 @@ export default function CardSortingSection() {
 
   if (!hasMounted) return null;
 
-  return (
-    <div id="cardsorting" className={styles.container}>
-      <h2 className={styles.heading}>Card Sorting</h2>
-      <div className={styles.instruction}>
-        <p>Place your cursor on a card</p>
-        <p>Drag it to the area that best corresponds to how you view yourself</p> 
-        <p>If you want to change your mind, just do it</p>
-      <div className={styles.cardSortingContainer}>
-      </div>
-        <DndContext
-          collisionDetection={closestCenter}
-          onDragStart={handleDragStart}
-          onDragEnd={handleDragEnd}
-        >
-          <DragOverlay>
-            {activeCard ? <DraggableCard card={activeCard} /> : null}
-          </DragOverlay>
+  
+return (
+  <div id="cardsorting" className={styles.container}>
+    <h2 className={styles.heading}>Card Sorting</h2>
 
-          <div className={styles.wrapper}>
-            <div className={styles.cardDeck}>
-              {deck.slice(0, 3).map((cardObj, index) => {
-                const rotations = [-3, 2, -1, 1, -2, 3, -1, 2, -3, 0];
-                const offsets = [2, 4, 6, 3, 5, 7, 4, 6, 8, 1];
-
-
-                return (
-                  <div
-                    key={cardObj.id}
-                    className={styles.cardStack}
-                    style={{
-                      transform: `rotate(${rotations[index % rotations.length]}deg) translateX(${offsets[index % offsets.length]}px)`,
-                      zIndex: 20 - index,
-                    }}
-                  >
-                    <DraggableCard card={cardObj} />
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className={styles.dropZoneWrapper}>
-              {Object.entries(zones).map(([zone, cards]) => (
-                <DroppableZone key={zone} id={zone}>
-                  {cards.map((card) => (
-                    <DraggableCard key={card.id} card={card} />
-                  ))}
-                </DroppableZone>
-              ))}
-            </div>
-          </div>
-        </DndContext>
-      </div>
+    <div className={styles.instruction}>
+      <p>Pick the cards that resonate with you.</p>
+      <p>Drag them into the category that best describes you.</p>
+      <p>You can always change your mind.</p>
     </div>
-  )
+
+    <div className={styles.cardSortingContainer}>
+      <DndContext
+        collisionDetection={closestCenter}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+        autoScroll={false}
+      >
+        <DragOverlay>
+          {activeCard ? (
+            <DraggableCard card={activeCard} />
+          ) : null}
+        </DragOverlay>
+
+        <div className={styles.sortingLayout}>
+          <div className={styles.cardDeck}>
+  {!isDeckEmpty ? (
+    deck.slice(0, 3).map((cardObj, index) => {
+      const rotations = [-3, 2, -1];
+      const offsets = [2, 4, 6];
+
+      return (
+        <div
+          key={cardObj.id}
+          className={styles.cardStack}
+          style={{
+            transform: `rotate(${rotations[index]}deg) translateX(${offsets[index]}px)`,
+            zIndex: 20 - index,
+          }}
+        >
+          <DraggableCard card={cardObj} />
+        </div>
+      );
+    })
+  ) : (
+    <div className={styles.completionMessage}>
+      <h3>That's a wrap!</h3>
+      <p>
+        You've sorted all the cards. Take a moment
+        to look at your choices.
+      </p>
+      <span>20 cards sorted</span>
+    </div>
+  )}
+</div>
+
+          <div className={styles.dropZoneWrapper}>
+            {Object.entries(zones).map(([zone, cards]) => (
+              <DroppableZone key={zone} id={zone}>
+                {cards.map((card) => (
+                  <DraggableCard key={card.id} card={card} />
+                ))}
+              </DroppableZone>
+            ))}
+          </div>
+        </div>
+      </DndContext>
+    </div>
+  </div>
+);
 }

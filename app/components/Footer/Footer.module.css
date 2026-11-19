@@ -1,55 +1,121 @@
+
 .footer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 1rem;
-    padding: 3rem 2rem 4rem 2rem;
-    border-top: rgba(255,255,255,0.15);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid #EDE9E4;
-    background: #FFF8F0;
-  background-image: url('../../../public/postcard-texture.jpg');
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  margin: 5rem auto 2rem;
+  padding: 0 var(--space-xxl);
+
+  background-color: #FFF8F0;
+  background-image:
+    linear-gradient(
+      rgba(255, 248, 240, 0.65),
+      rgba(255, 248, 240, 0.65)
+    ),
+    url('/postcard-texture.jpg');
+
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  background-blend-mode: multiply;
 
+  border-top: 1px solid rgba(52, 45, 40, 0.15);
+}
 
-    @media screen and (min-width: 600px) {
-        padding: 4rem 4rem;
-    }
+.footerIdentity h2 {
+  font-family: var(--font-general);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-text-primary);
+}
+
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.25rem;
+}
+
+.socialLinks {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.socialLinks a {
+  display: flex;
+  align-items: center;
+  color: var(--color-text-primary);
+  transition: color 0.2s ease;
+}
+
+.socialLinks a:hover {
+  color: var(--color-text-secondary);
 }
 
 .emailWrapper {
   display: flex;
-
-
+  align-items: center;
   gap: 0.5rem;
+  color: var(--color-text-primary);
 }
 
 .emailText {
   font-family: var(--font-general);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 500;
+  color: inherit;
+  text-decoration: none;
+}
+
+.emailText:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .copyIcon {
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--color-text-primary);
-  transition: color 0.2s ease;
-  padding: 0;
+  color: inherit;
+  padding: 0.25rem;
   display: flex;
   align-items: center;
+  transition: color 0.2s ease;
 }
 
 .copyIcon:hover {
   color: var(--color-text-secondary);
 }
 
-.linksRow {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  flex-wrap: wrap;
+.copyIcon:focus-visible,
+.socialLinks a:focus-visible,
+.emailText:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .footer {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .footerContent {
+    align-items: flex-start;
+  }
 }

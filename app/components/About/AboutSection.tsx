@@ -1,39 +1,89 @@
 
-'use client'
+'use client';
+
 import { useState } from 'react';
 import styles from './AboutSection.module.css';
 
-type TapeItem = { icon: string; label: string; description: string };
+type TapeItem = {
+  icon: string;
+  label: string;
+  description: string;
+};
 
 const tapeData: TapeItem[] = [
-  { icon: "🎮", label: "Gamified Mindset", description: "I design with dopamine in mind—small wins, big impact." },
-  { icon: "🛠", label: "Workshop Junkie", description: "I thrive in collaborative sprints and sticky-note storms." },
-  { icon: "🧠", label: "Creative Hacker", description: "I experiment with life like it’s a UX prototype." },
+  {
+    icon: '🎮',
+    label: 'Playful thinking',
+    description: 'I enjoy finding creative ways to make digital experiences engaging.',
+  },
+  {
+    icon: '🛠',
+    label: 'Collaborative',
+    description: 'I value sharing ideas, exploring possibilities and learning together.',
+  },
+  {
+    icon: '🧠',
+    label: 'Curious mind',
+    description: 'I like understanding how things work and looking for patterns and connections.',
+  },
 ];
 
 function AboutSection() {
-  //const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <section id="aboutsection" className={styles.aboutContainer}>
-  
-    <div className={styles.aboutBox}>
-    <h2>About me</h2>
-      <p>Din riktiga text här…</p>
+      <div className={styles.aboutBox}>
+        <div className={styles.intro}>
+          <span className={styles.eyebrow}>A LITTLE ABOUT ME</span>
+          <h2>Curious by nature. Creative by design.</h2>
 
-      <div className={styles.badgeList}>
-        {tapeData.map(({ icon, label, description }) => (
-          <div key={label} className={styles.badgeItem}>
-            <span className={styles.aboutBadge}>{icon} {label}</span>
-            <span className={styles.tooltip}>{description}</span>
-          </div>
-        ))}
+          <p>
+            I'm a UX designer and frontend developer who enjoys turning
+            ideas into thoughtful, useful digital experiences. I like
+            understanding people, exploring possibilities and bringing
+            concepts to life through design and code.
+          </p>
+
+          {expanded && (
+            <div className={styles.moreText}>
+              <p>
+                This is where you can tell a little more about your
+                background, what brought you to UX and development,
+                and what motivates you in your work.
+              </p>
+              <p>
+                You could also mention how you combine user-centred
+                thinking with a hands-on approach to building things.
+              </p>
+            </div>
+          )}
+
+          <button
+            type="button"
+            className={styles.readMore}
+            onClick={() => setExpanded(!expanded)}
+            aria-expanded={expanded}
+          >
+            {expanded ? 'Read less' : 'A little more about me'}
+            <span aria-hidden="true">{expanded ? '−' : '+'}</span>
+          </button>
+        </div>
+
+        <div className={styles.badgeList}>
+          {tapeData.map(({ icon, label, description }) => (
+            <article key={label} className={styles.badgeItem}>
+              <span className={styles.aboutBadge}>
+                <span aria-hidden="true">{icon}</span>
+                {label}
+              </span>
+              <p className={styles.badgeDescription}>{description}</p>
+            </article>
+          ))}
+        </div>
       </div>
-
-</div>
-
-</section>
-
+    </section>
   );
-};
+}
 
 export default AboutSection;

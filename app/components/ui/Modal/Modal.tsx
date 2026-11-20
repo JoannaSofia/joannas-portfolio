@@ -1,18 +1,57 @@
-import React from 'react'
+'use client';
 
-interface ModalProps {
-  isOpen: boolean;
+import { useEffect, useRef } from 'react';
+import type { Project } from '../../Projects/ProjectData';
+import styles from '../ProjectModal.module.css';
+
+type ProjectModalProps = {
+  project: Project;
   onClose: () => void;
-  children: React.ReactNode;
-}
+};
 
-export default function Modal() {
+export default function ProjectModal({
+  project,
+  onClose,
+}: ProjectModalProps) {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+
+    if (dialog && !dialog.open) {
+      dialog.showModal();
+    }
+  }, []);
+
   return (
-    <div>
-        <h3>Modal</h3>
-      <button
-      //={onclose}
-      >Klicka</button>
-    </div>
-  )
+    <dialog
+      ref={dialogRef}
+      className={styles.modal}
+      aria-labelledby="project-modal-title"
+      onClose={onClose}
+      onClick={(event) => {
+        if (event.target === event.currentTarget) {
+          onClose();
+        }
+      }}
+    >
+      <div className={styles.modalContent}>
+        <button
+          type="button"
+          className={styles.closeButton}
+          onClick={onClose}
+          aria-label="Close project details"
+        >
+          ×
+        </button>
+
+        <p>{project.category}</p>
+        <h2 id="project-modal-title">{project.title}</h2>
+
+        <img src={project.image} alt={`${project.title} project preview`} />
+
+        <p>{project.shortDescription}</p>
+      </div>
+    </dialog>
+  );
 }

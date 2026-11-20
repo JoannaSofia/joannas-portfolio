@@ -6,9 +6,9 @@
   min-width: 0;
 
   overflow: hidden;
-  border-radius: 0.75rem;
+  border-radius: var(--radius-md);
 
-  background-color: #FFF8F0;
+  background-color: var(--color-coral-100);
   background-image: url('/postcard-texture.jpg');
   background-size: cover;
   background-position: center;

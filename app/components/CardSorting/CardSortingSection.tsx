@@ -89,6 +89,10 @@ export default function CardSortingSection() {
   
 return (
   <div id="cardsorting" className={styles.container}>
+    <div className={`sectionDivider ${styles.cardSortingDivider}`}>
+    {/* Card sorting content */}
+    <div className={styles.cardSortingContent}>
+  
     <h2 className={styles.heading}>Card Sorting</h2>
 
     <div className={styles.instruction}>
@@ -154,6 +158,8 @@ return (
         </div>
       </DndContext>
     </div>
+  </div>
+  </div>
   </div>
 );
 }

@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${clash.variable} ${general.variable}`}>
       <body>
-        <div id="top" className="appContainer">
+        <div className="appContainer">
         <Navbar/>{children}
         </div>
         </body>

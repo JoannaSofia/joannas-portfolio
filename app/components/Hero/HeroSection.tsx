@@ -28,15 +28,10 @@ function HeroSection() {
       <div className={styles.heroLayout}>
         <div className={styles.heading}>
           <span className={styles.eyebrow}>
-            UX · FRONTEND · CREATIVE THINKING
+            Always curious about people
           </span>
 
           <h1>Frontend with a behavioral twist.</h1>
-
-          <p>
-            I combine UX thinking, psychology and frontend development
-            to create thoughtful and engaging digital experiences.
-          </p>
         </div>
 
         <div className={styles.stampControls}>
@@ -47,9 +42,8 @@ function HeroSection() {
               <button
                 key={t}
                 type="button"
-                className={`${styles.tag} ${styles[t]} ${
-                  type === t ? styles.active : ''
-                }`}
+                className={`${styles.tag} ${styles[t]} ${type === t ? styles.active : ''
+                  }`}
                 onClick={() => setType(t)}
                 aria-pressed={type === t}
               >
@@ -68,21 +62,18 @@ function HeroSection() {
             />
 
             <div className={styles.postcardText}>
-              <span className={styles.postcardEyebrow}>
-                A CREATIVE MIND, SENT YOUR WAY
-              </span>
-              <h3>Joanna Olofsson</h3>
-              <p>Frontend developer & UX designer</p>
               <div className={styles.addressLines}>
                 <span />
                 <span />
                 <span />
               </div>
-            </div>
+              <span className={styles.postcardEyebrow}>
+                From:
+              </span>
+              <h3>Joanna Olofsson</h3>
+              <p>Frontend developer & UX designer</p>
 
-            <span className={styles.postcardFooter}>
-              MADE WITH CURIOSITY
-            </span>
+            </div>
           </div>
         </div>
       </div>

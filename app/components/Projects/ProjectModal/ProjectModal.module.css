@@ -1,0 +1,38 @@
+.modal {
+  width: min(90vw, 800px);
+  max-height: 85vh;
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  overflow: auto;
+}
+
+.modal::backdrop {
+  background: rgba(30, 20, 30, 0.55);
+}
+
+.modalContent {
+  position: relative;
+  padding: 2.5rem;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background: transparent;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.modalContent img {
+  display: block;
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 8px;
+}

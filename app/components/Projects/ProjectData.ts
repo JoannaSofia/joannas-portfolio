@@ -25,3 +25,5 @@ export const projectData = [
     image: '/ideas.jpg',
   },
 ];
+
+export type Project = (typeof projectData)[number];

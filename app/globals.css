@@ -1,32 +1,36 @@
 :root {
---color-background-h: 60;
---color-background-s: 20%;
---color-background-l: 98%;
---color-background: hsl(
-  var(--color-background-h)
-  var(--color-background-s)
-  var(--color-background-l)
-);
+  --color-background-h: 60;
+  --color-background-s: 20%;
+  --color-background-l: 98%;
+  --color-background: hsl(var(--color-background-h) var(--color-background-s) var(--color-background-l));
+  --color-background-alternate-h: 60;
+  --color-background-alternate-s: 9.09%;
+  --color-background-alternate-l: 95.69%;
+  --color-background-alternate: hsl(var(--color-background-alternate-h) var(--color-background-alternate-s) var(--color-background-alternate-l));
   --color-text-primary-h: 283;
   --color-text-primary-s: 35%;
   --color-text-primary-l: 20%;
   --color-text-primary-hover-l: 12%;
   --color-text-primary: hsl(var(--color-primary-h) var(--color-primary-s) var(--color-primary-l));
   --color-text-primary-hover: hsl(var(--color-primary-h) var(--color-primary-s) var(--color-primary-hover-l));
-  --color-purple-100-h: 269;  
+  --color-divider-h: 300;
+  --color-divider-s: 6.12%;
+  --color-divider-l: 90.39%;
+  --color-divider: hsl(var(--color-divider-h) var(--color-divider-s) var(--color-divider-l));
+  --color-purple-100-h: 269;
   --color-purple-100-s: 100%;
   --color-purple-100-l: 95%;
   --color-purple-100: hsl(var(--color-purple-100-h) var(--color-purple-100-s) var(--color-purple-100-l));
   --color-purple-300-h: 270;
   --color-purple-300-s: 95%;
   --color-purple-300-l: 75%;
-  --color-purple-300: hsl(var(--color-purple-300-h) var(--color-purple-300-s) var(--color-purple-300-l)); 
+  --color-purple-300: hsl(var(--color-purple-300-h) var(--color-purple-300-s) var(--color-purple-300-l));
   --color-purple-500-h: 283;
   --color-purple-500-s: 35%;
   --color-purple-500-l: 20%;
-  --color-purple-500-hover-l: 12%;
   --color-purple-500: hsl(var(--color-purple-500-h) var(--color-purple-500-s) var(--color-purple-500-l));
   --color-purple-500-hover-l: 12%;
+  --color-purple-500: hsl(var(--color-purple-500-h) var(--color-purple-500-s) var(--color-purple-500-l));
   --color-purple-700-h: 273;
   --color-purple-700-s: 67%;
   --color-purple-700-l: 39%;
@@ -44,14 +48,25 @@
   --color-card-s: 100%;
   --color-card-l: 97%;
   --color-card: hsl(var(--color-card-h) var(--color-card-s) var(--color-card-l));
- 
+
+  --color-coral-500-h: 10;
+  --color-coral-500-s: 52%;
+  --color-coral-500-l: 68%;
+  --color-coral-500: hsl(var(--color-coral-500-h) var(--color-coral-500-s) var(--color-coral-500-l));
+
+  --color-coral-100-h: 13;
+  --color-coral-100-s: 53%;
+  --color-coral-100-l: 88%;
+  --color-coral-100: hsl(var(--color-coral-100-h) var(--color-coral-100-s) var(--color-coral-100-l));
+
   --space-sm: 0.5rem;
   --space-md: 1rem;
-  --space-lg: 1.5rem; 
+  --space-lg: 1.5rem;
   --space-xl: 2rem;
   --space-xxl: 4rem;
-  --radius-sm: 0.5rem;
-  --radius-md:1rem;
+  --radius-sm: 3px;
+  --radius-md: 12px;
+  --radius-lg: 999px;
 }
 
 *,
@@ -63,6 +78,11 @@
 * {
   margin: 0;
   padding: 0;
+}
+
+.appContainer {
+  width: 100%;
+  min-height: 100vh;
 }
 
 html {
@@ -122,7 +142,9 @@ a {
   text-decoration: none;
 }
 
-.appContainer {
-  width: 100%;
-  min-height: 100vh;
+.sectionDivider {
+  width: min(100% - 3rem, 1300px);
+  margin-inline: auto;
+  padding: 3rem var(--space-xxl) 5rem;
+  border-top: 1px solid var(--color-divider);
 }
